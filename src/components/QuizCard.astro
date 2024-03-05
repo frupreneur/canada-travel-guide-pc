@@ -1,0 +1,17 @@
+---
+
+const x = Astro.props.x
+---
+
+<div class="max-w-[600px] mx-auto my-5">
+    <h2 style={{ marginTop: "0 !important" }} class=" text-lg font-medium md:text-lg">
+  {  x.title
+  }      </h2>
+        <p class="intro">
+         {x.description}
+          <br />
+        </p>
+        <a href={`/${x.route}`} class="text-primary font-bold">Go To Quiz</a>
+    
+    
+    </div>

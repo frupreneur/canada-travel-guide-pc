@@ -1,0 +1,11 @@
+---
+ import data from "../../db/visa"
+const filteredData: typeof data = Astro.props.filteredData
+import QuizCard from "./QuizCard.astro"
+---
+
+
+<div class=" flex flex-wrap mt-20 justify-center">
+    <h2 class="text-center">Other U.S.A and Canada Travel Guides</h2>
+    {filteredData.map(y=><QuizCard x={y} />)}
+  </div> 

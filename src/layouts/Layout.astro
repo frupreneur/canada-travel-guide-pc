@@ -67,10 +67,14 @@ const { title="U.S.A Canada Travel", description="Embark on an unforgettable cro
 </html>
 
 <script>
-  setTimeout( function(){
+  setTimeout( async function(){
     for (let index = 0; index < 3; index++) {
-      /* @ts-ignore */   
+      try {
+        /* @ts-ignore */   
       (adsbygoogle = window.adsbygoogle || []).push({});
+      } catch (error) {
+        console.log(error)
+      }
     }
   }, 2000)
 </script>

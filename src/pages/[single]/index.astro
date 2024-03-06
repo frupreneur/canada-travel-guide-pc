@@ -22,7 +22,7 @@ const filteredData = data.filter(q=> q.route != id)
       </p>
       <p class="m-1 font-bold text-primary">({t} questions)</p>
       <a href={`/${x.route}/${1}?r=0`}  ><button>Get Started</button></a>
-      <!-- <AdSense /> -->
+      <AdSense />
       <Related filteredData={filteredData}/>
 	</>
 </Layout>

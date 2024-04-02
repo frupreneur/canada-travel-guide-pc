@@ -1,0 +1,39 @@
+---
+import Layout from "../../../../layouts/Layout.astro";
+import data from "../../../../../db/visa";
+import Related from "../../../../components/Related.astro";
+import AdSense from "../../../../components/AdSense.astro";
+// import ADX from '../../components/ADX.astro';
+const pathNameArr = Astro.url.pathname.split("/");
+
+const id = pathNameArr[1];
+const userId = pathNameArr[3];
+
+const travelUsaCanada = Astro.url.searchParams.get("travel-usa-canada") || "";
+const x = data.filter((x) => x.route === id)[0];
+const t = x.questions.length;
+const filteredData = data.filter((q) => q.route != id);
+---
+
+<Layout title={x.title} , description={x.description}>
+	<>
+		<h1
+			style={{ marginTop: "0 !important" }}
+			class="text-lg font-medium md:text-3xl"
+		>
+			{x.title}
+		</h1>
+		<AdSense />
+		<p class="intro">
+			{x.description}
+			<br />
+		</p>
+		<p class="m-1 font-bold text-primary">({t} questions)</p>
+		<a
+			href={`/${x.route}/user/${userId}/${1}?r=0&travel-usa-canada=${travelUsaCanada}`}
+			><button>Get Started</button></a
+		>
+		<AdSense />
+		<Related filteredData={filteredData} />
+	</>
+</Layout>

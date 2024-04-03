@@ -3,8 +3,8 @@ import { getRandomNumber } from "./utils";
 import { queryArr } from "./utils";
 
 const pathsToAddQuery = [
-	// "/canada-immigrant-jobs-loans-visa/user/317575",
-	// "/usa-jobs-visa-requirements/user/50",
+	"/canada-immigrant-jobs-loans-visa/user/317575",
+	,
 ];
 
 export const onRequest = defineMiddleware((context, next) => {

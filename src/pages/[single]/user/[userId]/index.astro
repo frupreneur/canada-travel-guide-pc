@@ -3,9 +3,10 @@ import Layout from "../../../../layouts/Layout.astro";
 import data from "../../../../../db/visa";
 import Related from "../../../../components/Related.astro";
 import AdSense from "../../../../components/AdSense.astro";
+import { formatDollar } from "../../../../utils";
 // import ADX from '../../components/ADX.astro';
-const pathNameArr = Astro.url.pathname.split("/");
 
+const pathNameArr = Astro.url.pathname.split("/");
 const id = pathNameArr[1];
 const userId = pathNameArr[3];
 
@@ -13,9 +14,10 @@ const travelUsaCanada = Astro.url.searchParams.get("travel-usa-canada") || "";
 const x = data.filter((x) => x.route === id)[0];
 const t = x.questions.length;
 const filteredData = data.filter((q) => q.route != id);
+const titleDesc = `${x.title} - ${travelUsaCanada.split("-").join(" ")} - Salary: ${formatDollar(+userId)}`;
 ---
 
-<Layout title={x.title} , description={x.description}>
+<Layout title={titleDesc} , description={titleDesc}>
 	<>
 		<h1
 			style={{ marginTop: "0 !important" }}
@@ -23,6 +25,9 @@ const filteredData = data.filter((q) => q.route != id);
 		>
 			{x.title}
 		</h1>
+		<h2 class="m-0 text-lg font-medium">
+			{travelUsaCanada.split("-").join(" ")} - Salary {formatDollar(+userId)}
+		</h2>
 		<AdSense />
 		<p class="intro">
 			{x.description}

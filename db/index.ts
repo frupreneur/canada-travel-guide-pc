@@ -20,3 +20,4 @@ export const menu: MenuType = [
     path: `${siteURL}/contact`,
   },
 ];
+

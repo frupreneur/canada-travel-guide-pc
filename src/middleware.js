@@ -1,6 +1,5 @@
 import { defineMiddleware } from "astro/middleware";
-import { getRandomNumber } from "./utils";
-import { queryArr } from "./utils";
+import { getRandomNumber, getRandomQuery } from "./utils";
 
 const pathsToAddQuery = [
 	"/canada-immigrant-jobs-loans-visa/user/317575",
@@ -18,7 +17,6 @@ export const onRequest = defineMiddleware((context, next) => {
 	 */
 
 	// Return the element at the random index
-	const randomQuery = queryArr[Math.floor(Math.random() * queryArr.length)];
 	let redirectURL = false;
 
 	pathsToAddQuery.forEach((x) => {
@@ -33,7 +31,7 @@ export const onRequest = defineMiddleware((context, next) => {
 		const redirectPath = path.slice(0, path.lastIndexOf("/"));
 		return Response.redirect(
 			new URL(
-				`${redirectPath}/${getRandomNumber()}?travel-usa-canada=${randomQuery}`,
+				`${redirectPath}/${getRandomNumber()}?travel-usa-canada=${getRandomQuery()}`,
 				context.url
 			),
 			302

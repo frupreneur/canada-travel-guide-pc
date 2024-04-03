@@ -3,6 +3,8 @@ import Layout from "../../../../layouts/Layout.astro";
 import data from "../../../../../db/visa";
 import Related from "../../../../components/Related.astro";
 import AdSense from "../../../../components/AdSense.astro";
+import { formatDollar } from "../../../../utils";
+
 // import ADX from '../../components/ADX.astro';
 
 const pathNameArr = Astro.url.pathname.split("/");
@@ -20,10 +22,15 @@ const travelUsaCanada = Astro.url.searchParams.get("travel-usa-canada") || "";
 const q = x.questions[+path - 1];
 
 const filteredData = data.filter((q) => q.route != id);
+
+const titleDesc = `${q.question} - ${travelUsaCanada.split("-").join(" ")} - Salary: ${formatDollar(+userId)}`;
 ---
 
-<Layout title={q.question + " - " + x.title} , description={x.description}>
+<Layout title={titleDesc} , description={titleDesc}>
 	<>
+		<h2 class="m-0 text-lg font-medium italic">
+			{travelUsaCanada.split("-").join(" ")} - Salary {formatDollar(+userId)}
+		</h2>
 		<h1
 			style={{ marginTop: "0 !important" }}
 			class="text-lg font-medium md:text-3xl"

@@ -1,10 +1,7 @@
 import { defineMiddleware } from "astro/middleware";
 import { getRandomNumber, getRandomQuery } from "./utils";
 
-const pathsToAddQuery = [
-	"/canada-immigrant-jobs-loans-visa/user/317575",
-	,
-];
+const pathsToAddQuery = ["/canada-immigrant-jobs-loans-visa/user/317575", ,];
 
 export const onRequest = defineMiddleware((context, next) => {
 	/**
@@ -25,15 +22,14 @@ export const onRequest = defineMiddleware((context, next) => {
 		}
 	});
 
+	// console.log(path, redirectPath, redirectURL);
+
 	if (redirectURL) {
 		const path = context.url.pathname;
-
 		const redirectPath = path.slice(0, path.lastIndexOf("/"));
-		return Response.redirect(
-			new URL(
-				`${redirectPath}/${getRandomNumber()}?travel-usa-canada=${getRandomQuery()}`,
-				context.url
-			),
+
+		return context.redirect(
+			`${redirectPath}/${getRandomNumber()}?travel-usa-canada=${getRandomQuery()}`,
 			301
 		);
 	}
@@ -45,6 +41,14 @@ export const onRequest = defineMiddleware((context, next) => {
 	 * =========================================
 	 * Note that this only works in SSR mode
 	 */
+
+	// return Response.redirect(
+	// 	new URL(
+	// 		`${redirectPath}/${getRandomNumber()}?travel-usa-canada=${getRandomQuery()}`,
+	// 		context.url
+	// 	),
+	// 	301
+	// );
 
 	return next();
 });

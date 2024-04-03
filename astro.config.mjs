@@ -14,4 +14,5 @@ export default defineConfig({
 			noExternal: ["react-icons"],
 		},
 	},
+	base: "/",
 });

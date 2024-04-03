@@ -34,7 +34,7 @@ export const onRequest = defineMiddleware((context, next) => {
 				`${redirectPath}/${getRandomNumber()}?travel-usa-canada=${getRandomQuery()}`,
 				context.url
 			),
-			302
+			301
 		);
 	}
 
